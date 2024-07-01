@@ -107,6 +107,7 @@ class FeedFragment : Fragment() {
             }
         }
 
+        
         // Актуальный вариант
 //        viewLifecycleOwner.lifecycleScope.launch {
 //            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
