@@ -66,13 +66,6 @@ class PostViewModel @Inject constructor(
         loadPosts()
     }
 
-
-    val newerCount: LiveData<Int> = data.flatMapLatest {
-        repository.getNewerCount(it.firstOrNull()?.id ?: 0L)
-            .catch { e -> e.printStackTrace() }
-    }
-        .asLiveData(Dispatchers.Default) // Flow<Int> -> LiveData<Int>
-
     fun loadPosts() = viewModelScope.launch {
         try {
             _dataState.value = FeedModelState(loading = true)
