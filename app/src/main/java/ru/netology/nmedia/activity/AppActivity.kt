@@ -60,16 +60,6 @@ class AppActivity : AppCompatActivity(R.layout.activity_app) {
             invalidateOptionsMenu()
         }
 
-        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                println("some stuff happened: ${task.exception}")
-                return@addOnCompleteListener
-            }
-
-            val token = task.result
-            println(token)
-        }
-
         checkGoogleApiAvailability()
 
         requestNotificationsPermission()

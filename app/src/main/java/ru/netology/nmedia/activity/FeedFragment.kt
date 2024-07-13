@@ -77,21 +77,7 @@ class FeedFragment : Fragment() {
             }
         }
 
-        // Устаревший вариант
-        /*
-        lifecycleScope.launchWhenCreated {
-            adapter.loadStateFlow.collectLatest { state ->
-                binding.swiperefresh.isRefreshing =
-                    state.refresh is LoadState.Loading ||
-                    state.prepend is LoadState.Loading ||
-                    state.append is LoadState.Loading
-            }
-        }
-         */
-//        viewModel.data.asLiveData().observe(viewLifecycleOwner) { state ->
-//            adapter.submitList(state)
-//            binding.emptyText.isVisible = state.isEmpty()
-//        }
+       
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.data.flowWithLifecycle(viewLifecycleOwner.lifecycle).collectLatest { state ->
